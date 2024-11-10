@@ -35,8 +35,9 @@ st.subheader('Penguin Species Prediction')
 # เพิ่มปุ่มเพื่อทำนาย
 if st.button('Predict'):
     # ทำนายผล
-    prediction = model.predict(user_input)
-
+    prediction_encoded = model.predict(x_new)
+    prediction = species_encoder.inverse_transform(prediction_encoded)
+    st.write(f"Predicted Species: {prediction[0]}")
    # แสดงผลการทำนาย
     st.subheader('Prediction Result')
     st.write(f"The predicted species is: {prediction}")
